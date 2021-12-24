@@ -1,5 +1,6 @@
 ﻿using AutomationFramework.UIElements;
 using System;
+using System.Threading;
 
 namespace AutomationFramework
 {
@@ -7,10 +8,16 @@ namespace AutomationFramework
     {
         static void Main(string[] args)
         {
-            Menu menu = new Menu();
-            Driver.driver.Navigate().GoToUrl("https://testing.todorvachev.com/");
-            menu.Selectors.Click();
+            Driver.driver.Navigate().GoToUrl(Config.BaseUrl);
+            NavigateTo.LoginThroughTestPage();
+            Thread.Sleep(5000);
 
+
+            Driver.driver.Navigate().GoToUrl(Config.BaseUrl);
+            NavigateTo.LoginThroughTestScenarios();
+            Thread.Sleep(5000);
+
+            Driver.driver.Quit();
 
         }
     }
