@@ -1,4 +1,6 @@
 ﻿using AutomationFramework.UIElements;
+using NUnit.Framework;
+using OpenQA.Selenium;
 using System;
 using System.Threading;
 
@@ -6,19 +8,31 @@ namespace AutomationFramework
 {
     class Program
     {
-        static void Main(string[] args)
+        IAlert alert;
+        //static void Main(string[] args)
+        ////{
+
+        ////}
+        [SetUp]
+        public void Initialize()
         {
-            Driver.driver.Navigate().GoToUrl(Config.BaseUrl);
+            Action.InitializeDriver();
+        }
+
+        [Test]
+        public void ValidLogin()
+        {
             NavigateTo.LoginThroughTestPage();
             Action.FillTheLoginForm(Config.Credentials.Valid.Username, Config.Credentials.Valid.Password, Config.Credentials.Valid.RepeatPassword);
+            alert = Driver.driver.SwitchTo().Alert();
+            Assert.AreEqual(Config.AlertTexts.SuccessfullLogin, alert.Text);
+            alert.Accept();
+        }
 
-
-            //Driver.driver.Navigate().GoToUrl(Config.BaseUrl);
-            //NavigateTo.LoginThroughTestScenarios();
-            //Thread.Sleep(5000);
-
-           // Driver.driver.Quit();
-
+        [TearDown]
+        public void CleanUp()
+        {
+            Driver.driver.Quit();
         }
     }
 }

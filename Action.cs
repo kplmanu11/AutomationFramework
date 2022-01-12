@@ -7,6 +7,10 @@ namespace AutomationFramework
 {
     public static class Action
     {
+        public static void InitializeDriver()
+        {
+            Driver.driver.Navigate().GoToUrl(Config.BaseUrl);
+        }
         public static void FillTheLoginForm(string username, string password, string repeatPassword)
         {
             LoginScenarioPost lstPost = new LoginScenarioPost();

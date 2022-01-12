@@ -37,5 +37,10 @@ namespace AutomationFramework
             }
         }
 
+        public static class AlertTexts
+        {
+            public static string SuccessfullLogin = "Succesful login!";
+        }
+
     }
 }
