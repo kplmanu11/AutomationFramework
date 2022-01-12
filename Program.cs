@@ -10,14 +10,14 @@ namespace AutomationFramework
         {
             Driver.driver.Navigate().GoToUrl(Config.BaseUrl);
             NavigateTo.LoginThroughTestPage();
-            Thread.Sleep(5000);
+            Action.FillTheLoginForm(Config.Credentials.Valid.Username, Config.Credentials.Valid.Password, Config.Credentials.Valid.RepeatPassword);
 
 
-            Driver.driver.Navigate().GoToUrl(Config.BaseUrl);
-            NavigateTo.LoginThroughTestScenarios();
-            Thread.Sleep(5000);
+            //Driver.driver.Navigate().GoToUrl(Config.BaseUrl);
+            //NavigateTo.LoginThroughTestScenarios();
+            //Thread.Sleep(5000);
 
-            Driver.driver.Quit();
+           // Driver.driver.Quit();
 
         }
     }
