@@ -14,7 +14,9 @@ namespace AutomationFramework
         public static void FillTheLoginForm(string username, string password, string repeatPassword)
         {
             LoginScenarioPost lstPost = new LoginScenarioPost();
-
+            lstPost.Username.Clear();
+            lstPost.Password.Clear();
+            lstPost.RepeatPassword.Clear();
             lstPost.Username.SendKeys(username);
             lstPost.Password.SendKeys(password);
             lstPost.RepeatPassword.SendKeys(repeatPassword);
